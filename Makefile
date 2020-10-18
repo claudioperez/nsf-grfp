@@ -50,16 +50,15 @@ $(outdir)/%.tex: $(srcdir)/%.md
 	-F pandoc-citeproc \
 	--verbose \
 	$(if $(timestampFlag),-VtimestampFlag=timestampFlag) \
-	# $(if $(flattenEqnsFlag),-H $(stydir)/imageeqn.sty) \
 
 # Tex -> PDF
 $(outdir)/%.pdf: $(outdir)/%.tex $(styles)
 	cd $(outdir) && lualatex \
 	--shell-escape \
-	--output-directory=../$(outdir) \
 	--interaction=nonstopmode \
 	../$< -o ../$@
 	# --verbose
+	#--output-directory=../$(outdir) \
 
 $(figdir)/%.pdf: $(srcdir)/%.gv
 	dot $< -Tpdf > $@
@@ -69,8 +68,7 @@ help:
 	@echo 'Makefile for the Pandoc workflow                                       '
 	@echo '                                                                       '
 	@echo 'Usage:                                                                 '
-	@echo '   make [final] [pdf | latex]       generate PDF file  				  '
-	@echo '   make latex	                   generate Latex files	 			  '
-	@echo '                                                                       '
-	@echo ' 																	  '
+	@echo '   make [final] [pdf | latex]       Generate PDF or latex files		  '
+	@echo '                                    from src/*.md                      '
+	@echo '   make touch [pdf | latex]		   Force a draft build when source		'
 	@echo ' 																	  '
