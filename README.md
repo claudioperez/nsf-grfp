@@ -1,6 +1,27 @@
 # Latex Template for 2020 NSF GRFP
 
-## Style
+**Table of Contents**
+- [Latex Template for 2020 NSF GRFP](#latex-template-for-2020-nsf-grfp)
+  - [How to Use](#how-to-use)
+    - [Building a PDF](#building-a-pdf)
+  - [Style Documentation](#style-documentation)
+    - [Required](#required)
+    - [Other](#other)
+  - [Sources, inspirations and alternatives:](#sources-inspirations-and-alternatives)
+
+
+> In order to construct a pdf that will be accepted by the style checker you must add the `final` target when invoking Make, as follows:
+>
+>```bash
+>make final pdf
+>```
+> See [Building a PDF](#building-a-pdf) section of this README.
+
+## How to Use
+
+### Building a PDF
+
+## Style Documentation
 
 ### Required
 
