@@ -1,6 +1,10 @@
 #----------------------------------------------------------
 # Makefile for document processing with Pandoc and lualatex
 #
+# Inspirations and alternatives:
+# - https://gist.github.com/kristopherjohnson/7466917
+# - https://gist.github.com/bertvv/e77e3a5d24d8c2a9bcc4
+# - https://keleshev.com/my-book-writing-setup/
 #----------------------------------------------------------
 
 SHELL = /usr/bin/bash
@@ -9,8 +13,6 @@ srcdir := src
 outdir := build
 figdir := build/figs
 stydir := style
-
-include Makefile.cmp
 
 # Collect all *.md files in the source directory
 sources := $(wildcard $(srcdir)/*.md)
@@ -26,7 +28,6 @@ flattenEqnsFlag := #false
 
 # PDFs
 pdf: $(targets); $(info $$targets are: [${targets}], ${timestampFlag})
-
 
 final:
 	touch $(sources)
