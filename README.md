@@ -25,10 +25,18 @@ Running the following command from the project root will generate final PDF file
 
 ```bash
 # Build build/filename.tex from src/filename.md
-pandoc src/filename.md -o build/filename.tex --defaults style/conf.yaml --template style/temp.tex -H style/nsf-grfp.tex -F pandoc-citeproc -V timestampFlag=false
+pandoc src/filename.md -o build/filename.tex \
+    --defaults style/conf.yaml \
+    --template style/temp.tex \
+    -H style/nsf-grfp.tex 
+    -F pandoc-citeproc 
+    -V timestampFlag=false
+
 # Build build/filename.pdf from build/filename.tex
 cd build
-lualatex --shell-escape --interaction=nonstopmode ../build/filename.tex -o filname.pdf
+lualatex --shell-escape \
+    --interaction=nonstopmode \
+    ../build/filename.tex -o filename.pdf
 ```
 
 or on systems with Make:
@@ -39,9 +47,9 @@ make final pdf
 
 Including the `final` target when invoking Make will cause all of the typeset equations to automatically be converted to PNGs. This is done in order to pass through the automatic format checker in the application portal.
 
-### Building a draft PDF
+### Building draft PDFs
 
-Run the following command from the project root directory will create a PDF **draft** in the `build/` directory with the same name as it's source Markdown file. This draft will include a timestamp in the header and equations will not be converted to PNGs for a quicker build, but otherwise the typesetting should be represent the final version.
+Running the following command from the project root directory will create a PDF **draft** in the `build/` directory with the same name as it's source Markdown file. This draft will include a timestamp in the header and equations will not be converted to PNGs for a quicker build, but otherwise the typesetting should be represent the final version.
 
 ```bash
 make pdf
@@ -51,7 +59,8 @@ make pdf
 
 ### Requirements
 
-- Margins
+- Margins, 1" \
+  Configured in [`style/conf.yaml`](style/conf.yaml)
 - Font
   - **11pt** \
     Configured in [`style/conf.yaml`](style/conf.yaml)
@@ -60,7 +69,8 @@ make pdf
   - **Cambria Math** \
     Configured in [`style/nsf-grfp.tex`](style/nsf-grfp.tex)
 - Single spacing
-- Equations/symbols as images
+- Equations/symbols as images \
+  Handled by [`style/imageeqn.sty`](style/imageeqn.sty)
 
 ### Other
 

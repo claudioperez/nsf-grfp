@@ -1,10 +1,6 @@
 #----------------------------------------------------------
 # Makefile for document processing with Pandoc and lualatex
 #
-# Inspirations and alternatives:
-# - https://gist.github.com/kristopherjohnson/7466917
-# - https://gist.github.com/bertvv/e77e3a5d24d8c2a9bcc4
-# - https://keleshev.com/my-book-writing-setup/
 #----------------------------------------------------------
 
 SHELL = /usr/bin/bash
@@ -22,7 +18,6 @@ styles := $(wildcard $(stydir)/*.sty)
 styles += $(wildcard *.tex)
 
 timestampFlag := true
-flattenEqnsFlag := #false
 
 .PHONY: all help final latex touch
 
@@ -36,7 +31,6 @@ final:
 
 latex: $(texTarg) $(styles); $(info $$targets are: [${texTarg}])
 
-# latex: $(outdir)/%.tex
 
 touch:
 	touch $(sources)
@@ -56,9 +50,8 @@ $(outdir)/%.pdf: $(outdir)/%.tex $(styles)
 	cd $(outdir) && lualatex \
 	--shell-escape \
 	--interaction=nonstopmode \
+	--verbose \
 	../$< -o ../$@
-	# --verbose
-	#--output-directory=../$(outdir) \
 
 $(figdir)/%.pdf: $(srcdir)/%.gv
 	dot $< -Tpdf > $@
