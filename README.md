@@ -21,11 +21,11 @@ The workflow of this project is designed to consolidate content files in the `sr
 
 ### Building Submission PDFs from Markdown
 
-Running the following command from the project root will generate final PDF files in the `build/` directory from the Markdown files in `src/`.
+Running the following terminal commands from the project root will generate final PDF files in the `build/` directory from the Markdown files in `src/`.
 
 ```bash
 # Build build/filename.tex from src/filename.md
-pandoc src/filename.md -o build/filename.tex \
+$ pandoc src/filename.md -o build/filename.tex \
     --defaults style/conf.yaml \
     --template style/temp.tex \
     -H style/nsf-grfp.tex 
@@ -33,8 +33,8 @@ pandoc src/filename.md -o build/filename.tex \
     -V timestampFlag=false
 
 # Build build/filename.pdf from build/filename.tex
-cd build
-lualatex --shell-escape \
+$ cd build
+$ lualatex --shell-escape \
     --interaction=nonstopmode \
     ../build/filename.tex -o filename.pdf
 ```
