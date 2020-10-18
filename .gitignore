@@ -12,3 +12,4 @@ build/*.tex
 
 build/eqns/*.png
 build/eqns/*.tex
+build/eqns/*.pdf

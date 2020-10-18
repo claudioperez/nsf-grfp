@@ -2,10 +2,7 @@
 
 **Table of Contents**
   - [How to Use](#how-to-use)
-    - [Building a PDF](#building-a-pdf)
   - [Style Documentation](#style-documentation)
-    - [Required](#required)
-    - [Other](#other)
   - [Sources, inspirations and alternatives:](#sources-inspirations-and-alternatives)
 
 
@@ -18,7 +15,27 @@
 
 ## How to Use
 
-### Building a PDF
+The workflow of this project is designed to consolidate content files in the `src/` directory. Any file in this directory with a `.md` extension will be used as a target when Make is invoked.
+
+### Building a PDF from Markdown
+
+Running the following command from the project root will generate final PDF files in the `build/` directory from the Markdown files in `src/`.
+
+```bash
+make final pdf
+```
+
+Including the `final` target when invoking Make will cause all of the typeset equations to automatically be converted to PNGs. This is done in order to pass through the automatic format checker in the application portal.
+
+Run the following command from the project root directory will create a PDF **draft** in the `build/` directory with the same name as it's source Markdown file. This draft will include a timestamp in the header and equations will not be converted to PNGs for a quicker build, but otherwise the typesetting should be represent the final version.
+
+```bash
+make pdf
+```
+
+### Building a PDF from Latex
+
+
 
 ## Style Documentation
 
