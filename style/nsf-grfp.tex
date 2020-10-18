@@ -5,7 +5,7 @@
 \newcommand{\HRule}{\rule{\linewidth}{0.4mm}}
 \newcommand{\Hrule}{\rule{\linewidth}{0.3mm}}
 
-\usepackage{../style/timestamp}
+\iftimestamp\usepackage{../style/timestamp}\fi
 
 
 \usepackage{fontspec}
@@ -30,13 +30,6 @@
 
 %--------------------------------------------------------------
 % Headers
-
-% \usepackage[tiny,compact]{titlesec}
-% \titlespacing\section{0pt}{0pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
-% \titlespacing\subsection{0pt}{0pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
-% \titlespacing\subsubsection{0pt}{0pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
-% \titlespacing\paragraph{0pt}{0pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
-
 \makeatletter
 \renewcommand\section{\@startsection {section}{1}{\z@}%
                                    {-0.6ex \@plus -0.5ex \@minus -.2ex}%
