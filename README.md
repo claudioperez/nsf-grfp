@@ -1,7 +1,6 @@
 # Latex Template for 2020 NSF GRFP
 
 **Table of Contents**
-- [Latex Template for 2020 NSF GRFP](#latex-template-for-2020-nsf-grfp)
   - [How to Use](#how-to-use)
     - [Building a PDF](#building-a-pdf)
   - [Style Documentation](#style-documentation)
@@ -15,7 +14,7 @@
 >```bash
 >make final pdf
 >```
-> See [Building a PDF](#building-a-pdf) section of this README.
+> See [Building a PDF](#building-a-pdf) section of this README for details.
 
 ## How to Use
 
