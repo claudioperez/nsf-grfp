@@ -1,0 +1,9 @@
+metadata:
+  csl: style/citestyle.csl
+  geometry:
+    - margin=1truein
+    # - showframe
+variables:
+  fontsize: 11pt
+  # fontfamily: times
+  # mathfont: cambria

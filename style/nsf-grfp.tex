@@ -1,0 +1,68 @@
+
+\setlength{\parindent}{0em} % paragraph indentation
+\setlength{\parskip}{0em}   % paragraph spacing
+
+\newcommand{\HRule}{\rule{\linewidth}{0.4mm}}
+\newcommand{\Hrule}{\rule{\linewidth}{0.3mm}}
+
+\usepackage{../style/timestamp}
+
+
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setmathfont{Cambria Math}
+
+% \usepackage{setspace}
+% \singlespacing
+
+\makeatletter
+\def\@maketitle{
+  \textbf{\@title}%
+  % Print timestamp for draft (non-final) builds
+  \iftimestamp\hspace{10pt}\small{\texttt{\timestamp}}\else\fi
+  \hfill \textbf{\@author}
+  \HRule \par
+}
+\makeatother
+
+% \usepackage{setspace}
+% \singlespacing
+
+%--------------------------------------------------------------
+% Headers
+
+% \usepackage[tiny,compact]{titlesec}
+% \titlespacing\section{0pt}{0pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+% \titlespacing\subsection{0pt}{0pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+% \titlespacing\subsubsection{0pt}{0pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
+% \titlespacing\paragraph{0pt}{0pt plus 2pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+\makeatletter
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-0.6ex \@plus -0.5ex \@minus -.2ex}%
+                                   {-1em}%
+                                   %{\normalfont\textit\scshape\large}}
+                                   {\normalfont\textbf}}
+\renewcommand\subsection{\@startsection {subsection}{1}{\z@}%
+                                   {-0.4ex \@plus -0.5ex \@minus -.2ex}%
+                                   {-1em}%
+                                   {\normalfont\textit}}
+                                   %{\normalfont\textbf}}
+\makeatother
+
+% Turn off page numbering -------------------------------------
+\pagenumbering{gobble}
+
+% References --------------------------------------------------
+% \usepackage[numbers]{natbib}
+% \bibliographystyle{unsrtnat}
+\renewcommand{\refname}{References \vspace{-0.6\baselineskip}} % no extra vert. space after title
+% \setlength{\bibsep}{0pt} % no extra vert. space between bib items
+
+
+\iftimestamp
+\else
+\usepackage{shellesc}
+% \usepackage{imageeqn}
+\usepackage{../style/imageeqn}
+\fi

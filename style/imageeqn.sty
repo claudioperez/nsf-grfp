@@ -1,0 +1,70 @@
+%https://tex.stackexchange.com/questions/214641/how-to-get-mathematical-equations-into-image-in-latex
+\def\eqndir{eqns}
+
+\usepackage{shellesc}
+\NeedsTeXFormat{LaTeX2e}[1994/12/01]
+% \ProvidesPackage{imageeqn}[2014/11/30 v0.2 Image equations]
+
+\RequirePackage{graphicx}
+\RequirePackage{environ}
+\RequirePackage{pgf}
+
+\newcommand\ie@resolution{288}
+\pgfmathsetmacro\ie@scale{72/\ie@resolution}
+
+\newwrite\@out
+\newcounter{ie@subjob}
+
+% -- open subjob and write preamble
+\def\ie@open{%
+  \stepcounter{ie@subjob}%
+  \immediate\openout\@out=\eqndir/\jobname-eqn-\arabic{ie@subjob}.tex%
+  \immediate\write\@out{\noexpand\documentclass[convert={density=\ie@resolution,outext=.png}]{standalone}}%
+  \immediate\write\@out{\noexpand\usepackage{shellesc}}%
+  \immediate\write\@out{\noexpand\usepackage{amsmath}}%
+  \immediate\write\@out{\noexpand\begin{document}}%
+  \immediate\write\@out{\noexpand$}%
+}
+
+% -- close current subjob
+\def\ie@close{%
+  \immediate\write\@out{\noexpand$}%
+  \immediate\write\@out{\noexpand\end{document}}%
+  \immediate\closeout\@out%
+} 
+
+% -- compile and insert current subjob
+\def\ie@emit{%
+  \immediate\write18{cd \eqndir ; lualatex --verbose --shell-esc --interaction=nonstopmode \jobname-eqn-\arabic{ie@subjob}.tex}%
+  % \immediate\write18{pdflatex -shell-escape -enable-write18 -interaction=nonstopmode \jobname-eqn-\arabic{ie@subjob}.tex}%
+  % \immediate\write18{convert -density 300 \jobname-eqn-\arabic{ie@subjob}.pdf \jobname-eqn-\arabic{ie@subjob}.png}
+  % \includegraphics[scale=\ie@scale]{\jobname-eqn-\arabic{ie@subjob}.pdf}%
+  \includegraphics[height=\fontcharht\font`\B]{\eqndir/\jobname-eqn-\arabic{ie@subjob}.png}%
+} 
+
+% -- define \inlineimageeqn command
+\newcommand\inlineimageeqn[1]{%
+  \ie@open%
+  \immediate\write\@out{\unexpanded{#1}}%
+  \ie@close%
+  \ie@emit%  
+}
+
+% -- redefine 'equation' environment
+\RenewEnviron{equation}{%
+  \begin{center}
+    \ie@open%
+    \immediate\write\@out{\BODY}%
+    \ie@close%
+    \ie@emit%
+  \end{center}}
+
+% -- redefine '\[ \]' environment
+\def\[#1\]{\begin{center}\inlineimageeqn{#1}\end{center}}
+
+% -- redefine '\( \)' environment
+\def\(#1\){\inlineimageeqn{#1}}
+
+% -- refine inline math
+\catcode`\$=13
+\def$#1${\inlineimageeqn{#1}}

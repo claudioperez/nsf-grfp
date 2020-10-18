@@ -1,0 +1,15 @@
+
+# LaTex
+*.aux
+*.log
+
+# outputs
+build/*.pdf
+build/*.log
+build/*.aux
+
+build/*.png
+build/*.tex
+build/eqns/*.pdf
+build/eqns/*.png
+build/eqns/*.tex

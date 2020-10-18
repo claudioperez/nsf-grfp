@@ -1,0 +1,51 @@
+
+digraph G {
+
+  bgcolor="#ffffff00"
+  subgraph cluster_00 {
+
+    subgraph cluster_0 {
+      style="filled, rounded";
+      color="#E6EAF2"
+      node [style=filled,color=white];
+      a1 -> a2 -> a3;
+      a3 -> a1 [label = " -10" color=red fontcolor=red];
+      label = "System A";
+    }
+
+    subgraph cluster_1 {
+      node [style=filled color="#E6EAF2"];
+      b1 -> b2;
+      b0 -> b2 [label = " +12" color=green fontcolor=green];
+      label = "System B";
+      style="dashed, rounded"
+      color=blue
+    }
+
+    subgraph cluster_2 {
+      style="dashed, rounded";
+      color=red
+      node [style=filled];
+      g1;
+      g2;
+
+      label = "System G";
+    }
+
+    start -> a1;
+    start -> b0;
+    start -> b1;
+    a1 -> b2;
+    a3 -> g2;
+
+    b2 -> g1;
+    g1 -> end;
+    b2 -> g2;
+    g2 -> end;
+    // b3 -> end;
+
+    start [label="load"];
+    end [label="Assemble"];
+  }
+
+}
