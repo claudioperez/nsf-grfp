@@ -1,5 +1,7 @@
 # Latex Template for 2020 NSF GRFP
 
+A Latex template and Markdown/Pandoc workflow for the NSF GRFP application that is accepted by the application portal.
+
 **Table of Contents**
   - [How to Use](#how-to-use)
   - [Style Documentation](#style-documentation)
@@ -31,7 +33,7 @@ lualatex --shell-escape --interaction=nonstopmode ../build/filename.tex -o filna
 
 or on systems with Make:
 
-```bash
+```shell
 make final pdf
 ```
 
@@ -69,7 +71,7 @@ make pdf
 
 - [Pandoc]()
 - [pandoc-citeproc]()
-- 
+- LuaLatex (XeTeX may work with minor tweaks)
 
 
 ## Sources, inspirations and alternatives:
