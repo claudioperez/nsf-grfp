@@ -1,6 +1,6 @@
 ---
-title: Sample title
-author: Jane Doe
+title: Cours d'analyse - Analyse Algebrique
+author: Augustine Cauchy
 bibliography: src/refs.bib
 keywords:
     - kwd-1
@@ -8,17 +8,25 @@ keywords:
     - kwd-3
 ...
 
-# Section-1
+# Des Fonctions Réelles
 
-Lorem ipsum, inline math, $E=mc^2$. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur:
+## Des fonctions simples
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur:
+Parmi les fonctions d'une variable $x$, on appelle *simples* celles qui resultent d'une seule operation effectuee sur cette variable.
+
+...
+
+En consequence, si l'on designe par $A$ un nombre constant, et par $a= \pm A$ une quantite constante, les fonctions algebriques simples de la variable x seront
+
+$$
+a+x,\quad a-x, \quad ax, \quad\dfrac{a}{x}, \quad a^x, \quad A^x, \quad \mathbf{L}(x)
+$$
+
+Nous ne tenons pas ici compte des racines, parce qu'on peut toujours les ramener aux puissances.
 
 ## Section-1.1
 
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur:
-
-$$e^{i\pi}=-1$$
 
 # Section-2
 

@@ -15,9 +15,10 @@ sources := $(wildcard $(srcdir)/*.md)
 targets := $(patsubst %.md,%.pdf,$(subst $(srcdir),$(outdir),$(sources)))
 texTarg = $(patsubst %.md,%.tex,$(subst $(srcdir),$(outdir),$(sources)))
 styles := $(wildcard $(stydir)/*.sty)
-styles += $(wildcard *.tex)
+styles += $(wildcard $(stydir)/*.tex)
 
-timestampFlag := true
+is_draft := true
+# timestampFlag := true
 
 .PHONY: all help final latex touch
 
@@ -26,8 +27,7 @@ pdf: $(targets); $(info $$targets are: [${targets}], ${timestampFlag})
 
 final:
 	touch $(sources)
-	$(eval timestampFlag=)
-	$(eval flattenEqnsFlag=true)
+	$(eval is_draft=)
 
 latex: $(texTarg) $(styles); $(info $$targets are: [${texTarg}])
 
@@ -43,15 +43,15 @@ $(outdir)/%.tex: $(srcdir)/%.md
 	-H $(stydir)/nsf-grfp.tex \
 	-F pandoc-citeproc \
 	--verbose \
-	$(if $(timestampFlag),-VtimestampFlag=timestampFlag) \
+	$(if $(is_draft),-VtimestampFlag=true) \
 
 # Tex -> PDF
 $(outdir)/%.pdf: $(outdir)/%.tex $(styles)
 	cd $(outdir) && lualatex \
 	--shell-escape \
-	--interaction=nonstopmode \
 	--verbose \
 	../$< -o ../$@
+	--interaction=nonstopmode \
 
 $(figdir)/%.pdf: $(srcdir)/%.gv
 	dot $< -Tpdf > $@

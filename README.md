@@ -17,11 +17,11 @@ A Latex template and Markdown/Pandoc workflow for the NSF GRFP application that 
 
 ## How to Use
 
-The workflow of this project is designed to consolidate content files in the `src/` directory. Any file in this directory with a `.md` extension will be used as a target when Make is invoked.
+The workflow of this project is designed to consolidate content files in the `src/` directory. Any file in this directory with a `.md` extension will be used to generate a PDF when Make is invoked. PDFs can be generated in two manners: one for a quick draft build, and another for final submission.
 
 ### Building Submission PDFs from Markdown
 
-Running the following terminal commands from the project root will generate final PDF files in the `build/` directory from the Markdown files in `src/`.
+Running the following terminal commands from the project root will generate final PDF files in the `build/` directory from a Markdown file in `src/`.
 
 ```bash
 # Build build/filename.tex from src/filename.md
@@ -86,6 +86,7 @@ make pdf
 
 ## Sources, inspirations and alternatives:
 
+  - https://github.com/tompollard/phd_thesis_markdown
   - https://gist.github.com/kristopherjohnson/7466917
   - https://gist.github.com/bertvv/e77e3a5d24d8c2a9bcc4
   - https://keleshev.com/my-book-writing-setup/
