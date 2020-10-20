@@ -31,6 +31,8 @@ final:
 
 latex: $(texTarg) $(styles); $(info $$targets are: [${texTarg}])
 
+html: $(patsubst %.md,%.html,$(subst $(srcdir),$(outdir),$(sources)))
+
 
 touch:
 	touch $(sources)
@@ -41,8 +43,16 @@ $(outdir)/%.tex: $(srcdir)/%.md
 	--defaults $(stydir)/conf.yaml \
 	--template $(stydir)/temp.tex \
 	-H $(stydir)/nsf-grfp.tex \
-	-F pandoc-citeproc \
 	--verbose \
+	--standalone \
+	--citeproc \
+	$(if $(is_draft),-VtimestampFlag=true) \
+
+# Markdown -> HTML
+$(outdir)/%.html: $(srcdir)/%.md
+	pandoc '$<' -o $@ \
+	--verbose \
+	--citeproc \
 	$(if $(is_draft),-VtimestampFlag=true) \
 
 # Tex -> PDF

@@ -21,7 +21,9 @@
   \immediate\openout\@out=\eqndir/\jobname-eqn-\arabic{ie@subjob}.tex%
   \immediate\write\@out{\noexpand\documentclass[convert={density=\ie@resolution,outext=.png}]{standalone}}%
   \immediate\write\@out{\noexpand\usepackage{shellesc}}%
-  \immediate\write\@out{\noexpand\usepackage{amsmath}}%
+  \immediate\write\@out{\noexpand\usepackage{amsmath,amssymb}}%
+  \immediate\write\@out{\noexpand\usepackage{unicode-math}}%
+  \immediate\write\@out{\noexpand\setmathfont{Cambria Math}}%
   \immediate\write\@out{\noexpand\begin{document}}%
   \immediate\write\@out{\noexpand$}%
 }
@@ -38,9 +40,10 @@
   \immediate\write18{cd \eqndir ; lualatex --verbose --shell-esc --interaction=nonstopmode \jobname-eqn-\arabic{ie@subjob}.tex}%
   % \immediate\write18{pdflatex -shell-escape -enable-write18 -interaction=nonstopmode \jobname-eqn-\arabic{ie@subjob}.tex}%
   % \immediate\write18{convert -density 300 \jobname-eqn-\arabic{ie@subjob}.pdf \jobname-eqn-\arabic{ie@subjob}.png}
-  % \includegraphics[scale=\ie@scale]{\jobname-eqn-\arabic{ie@subjob}.pdf}%
-  \includegraphics[height=\fontcharht\font`\B]{\eqndir/\jobname-eqn-\arabic{ie@subjob}.png}%
-} 
+  % \includegraphics[scale=\ie@scale]{\eqndir/\jobname-eqn-\arabic{ie@subjob}.png}%
+  % \includegraphics[height=\fontcharht\font`\B]{\eqndir/\jobname-eqn-\arabic{ie@subjob}.png}%
+  \includegraphics[height=1.3ex]{\eqndir/\jobname-eqn-\arabic{ie@subjob}.png}%
+}
 
 % -- define \inlineimageeqn command
 \newcommand\inlineimageeqn[1]{%

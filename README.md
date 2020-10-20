@@ -79,8 +79,7 @@ make pdf
 
 ## Dependencies
 
-- [Pandoc]()
-- [pandoc-citeproc]()
+- [Pandoc](https://pandoc.org) >= 2.11
 - LuaLatex (XeTeX may work with minor tweaks)
 
 
