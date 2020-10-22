@@ -37,13 +37,16 @@
 
 % -- compile and insert current subjob
 \def\ie@emit{%
-  \immediate\write18{cd \eqndir ; lualatex --verbose --shell-esc --interaction=nonstopmode \jobname-eqn-\arabic{ie@subjob}.tex}%
-  % \immediate\write18{pdflatex -shell-escape -enable-write18 -interaction=nonstopmode \jobname-eqn-\arabic{ie@subjob}.tex}%
-  % \immediate\write18{convert -density 300 \jobname-eqn-\arabic{ie@subjob}.pdf \jobname-eqn-\arabic{ie@subjob}.png}
+  % \immediate\write18{cd \eqndir ; lualatex --verbose --shell-esc --interaction=nonstopmode \jobname-eqn-\arabic{ie@subjob}.tex}%
   % \includegraphics[scale=\ie@scale]{\eqndir/\jobname-eqn-\arabic{ie@subjob}.png}%
   % \includegraphics[height=\fontcharht\font`\B]{\eqndir/\jobname-eqn-\arabic{ie@subjob}.png}%
-  \includegraphics[height=1.3ex]{\eqndir/\jobname-eqn-\arabic{ie@subjob}.png}%
+  % \includegraphics[scale=0.9]{\eqndir/\jobname-eqn-\arabic{ie@subjob}.png}%
+  \raisebox{-0.23\height}{\includegraphics[scale=0.9]{\eqndir/\jobname-eqn-\arabic{ie@subjob}.png}}%
 }
+% \def\ie@emitBib{%
+%   \immediate\write18{cd \eqndir ; lualatex --verbose --shell-esc --interaction=nonstopmode \jobname-eqn-\arabic{ie@subjob}.tex}%
+%   \includegraphics[scale=0.9]{\eqndir/\jobname-eqn-\arabic{ie@subjob}.png}%
+% }
 
 % -- define \inlineimageeqn command
 \newcommand\inlineimageeqn[1]{%
@@ -52,6 +55,16 @@
   \ie@close%
   \ie@emit%  
 }
+
+% % -- redefine citation environment
+% \RenewEnviron{equation}{%
+%   \begin{center}
+%     \ie@open%
+%     \immediate\write\@out{\BODY}%
+%     \ie@close%
+%     \ie@emit%
+%   \end{center}}
+
 
 % -- redefine 'equation' environment
 \RenewEnviron{equation}{%

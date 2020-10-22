@@ -59,13 +59,29 @@ make pdf
 
 ### Requirements
 
-- Margins, 1" \
+[source, Accessed 2020-10-20 14:00 PDT](https://www.nsfgrfp.org/applicants/faqs#application-Technical-FAQs)
+
+- Times New Roman font for all text, Cambria Math font for equations, and Symbol font for non-alphabetic characters (it is recommended that equations and symbols be inserted as an image)
+  Configured in [`style/nsf-grfp.tex`](style/nsf-grfp.tex)
+- Font size no smaller than 11-pt
   Configured in [`style/conf.yaml`](style/conf.yaml)
+- No less than single spacing (approximately six lines of text within a vertical space of one inch)
+- 1" margins on all sides, no text inside 1" margins (no header, footer, or page number)
+  Configured in [`style/conf.yaml`](style/conf.yaml)
+- Standard letter paper size (8.5" by 11")
+- File cannot be a scanned image
+- File size cannot exceed 10 MB
+- File cannot be password protected
+- File cannot be empty
+- Personal, Relevant Background and Future Goals Statement cannot exceed 3 pages
+- Graduate Research Plan Statement cannot exceed two pages
+
+-----
+
+- Margins, 1" \
 - Font
   - **11pt** \
-    Configured in [`style/conf.yaml`](style/conf.yaml)
   - **Times New Roman** \
-    Configured in [`style/nsf-grfp.tex`](style/nsf-grfp.tex)
   - **Cambria Math** \
     Configured in [`style/nsf-grfp.tex`](style/nsf-grfp.tex)
 - Single spacing

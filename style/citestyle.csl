@@ -43,7 +43,8 @@
       <text variable="page" suffix=". "/>
       <group delimiter=", ">
         <text variable="DOI" prefix="doi:"/>
-        <!-- <text variable="URL" prefix="Available at " suffix=" "/> -->
+        <text variable="URL" prefix="Available at " suffix=" "/>
+        <!-- <text variable="URL" prefix="url: " suffix=" "/> -->
       </group>
     </layout>
   </bibliography>

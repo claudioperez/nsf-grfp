@@ -8,6 +8,7 @@ SHELL = /usr/bin/bash
 srcdir := src
 outdir := build
 figdir := build/figs
+eqndir := build/eqns
 stydir := style
 
 # Collect all *.md files in the source directory
@@ -18,9 +19,8 @@ styles := $(wildcard $(stydir)/*.sty)
 styles += $(wildcard $(stydir)/*.tex)
 
 is_draft := true
-# timestampFlag := true
 
-.PHONY: all help final latex touch
+.PHONY: all help final latex touch html
 
 # PDFs
 pdf: $(targets); $(info $$targets are: [${targets}], ${timestampFlag})
@@ -33,7 +33,6 @@ latex: $(texTarg) $(styles); $(info $$targets are: [${texTarg}])
 
 html: $(patsubst %.md,%.html,$(subst $(srcdir),$(outdir),$(sources)))
 
-
 touch:
 	touch $(sources)
 
@@ -41,8 +40,9 @@ touch:
 $(outdir)/%.tex: $(srcdir)/%.md
 	pandoc '$<' -o $@ \
 	--defaults $(stydir)/conf.yaml \
-	--template $(stydir)/temp.tex \
+	--template $(stydir)/template.tex \
 	-H $(stydir)/nsf-grfp.tex \
+	-V urlcolor=blue \
 	--verbose \
 	--standalone \
 	--citeproc \

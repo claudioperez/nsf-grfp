@@ -5,5 +5,4 @@ metadata:
     # - showframe
 variables:
   fontsize: 11pt
-  # fontfamily: times
-  # mathfont: cambria
+  urlcolor: blue
